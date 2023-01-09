@@ -2,13 +2,13 @@
 
 
 
-<<<<<<< Updated upstream
-createFilterElements(LEVELS, document.querySelector("#level_filter > ul"));
+
+create_levels_filter(LEVELS, document.querySelector("#level_filter > ul"));
 createFilterElements(SUBJECTS, document.querySelector("#subject_filter > ul"));
 createFilterElements(LANGUAGES, document.querySelector("#language_filter > ul"));
 create_countries_cities_filters();
 
-=======
+
 
 /*
 
@@ -21,9 +21,9 @@ create_countries_cities_filters();
 */
 
 
-create_levels_filter();
-create_subjects_filter();
-create_language_filter();
+create_levels_filter(LEVELS, document.querySelector("#level_filter > ul"));
+create_subjects_filter(SUBJECTS, document.querySelector("#subject_filter > ul"));
+create_language_filter(LANGUAGES, document.querySelector("#language_filter > ul"));
 create_countries_cities_filters();
 
 function create_language_filter () {
@@ -63,12 +63,8 @@ function create_levels_filter () {
   }
 
 
->>>>>>> Stashed changes
+
 document.querySelector("#search_field button").addEventListener("click", update_programmes);
 
 // Initialise programmes list by calling relevant function
 update_programmes();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
