@@ -85,9 +85,16 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#top_images > div {
-  grid-row: 1; 
-  background-image: url('media/geo_images/argentina_normal_1.jpg');
+#top_images div:first-of-type {
+  background-image: url(../media/geo_images/atlanta_normal_1.jpg);
+}
+
+#top_images div:nth-of-type(2) {
+  background-image: url(../media/geo_images/madrid_normal_2.jpg);
+}
+
+#top_images div:last-of-type {
+  background-image: url(../media/geo_images/valparaiso_normal_2.jpg);
 }
 #top_text {
   position: relative;
