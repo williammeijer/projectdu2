@@ -1,7 +1,18 @@
-
 // G
 // CODE According to specification
 function click_filter_element (event) {
+  let classList = event.currentTarget.classList;
+  let check = classList.contains("selected")
+  console.log(classList);
+  console.log(check);
+
+  if (check) {
+      classList.remove("selected");
+  } else {
+      classList.add("selected");
+  }
+
+  update_programmes();
 
   /*
     ARGUMENTS
@@ -25,7 +36,15 @@ function click_filter_element (event) {
 // G
 // CODE according to specification
 function create_filter_element (data) {
+  const element = document.createElement("li");
+    element.classList.add(data.class);
+    data.parent.append(element);
+    element.textContent = data.textContent;
+    element.addEventListener("click", click_filter_element);
 
+    //console.log();
+    
+    return element;
   /*
     ARGUMENTS
       data: object that contains the following keys:
@@ -174,7 +193,38 @@ function create_language_filter () {
 // G / VG (see details in specification)
 // CODE according to specifications
 function create_programme (programme) {
-  
+  let uni = UNIVERSITIES.find(function (uni) {
+    if (uni.id == programme.universityID) return true;
+});
+
+let city = CITIES.find(function (city) {
+    if (city.id == uni.cityID) return true;
+});
+
+let country = COUNTRIES.find(function (country) {
+    if (country.id == city.countryID) return true;
+});
+
+let subject = SUBJECTS.find(function (subject) {
+    if (subject.id == programme.subjectID) return true;
+});
+
+let language = LANGUAGES.find(function (language) {
+    if (language.id == programme.languageID) return true;
+});
+
+let level = LEVELS.find(function (level) {
+    if (level.id == programme.levelID) return true;
+});
+
+let newProgramme = document.createElement("li");
+
+newProgramme.innerHTML =
+`<h1>${programme.name}</h1><p>${uni.name}</p><p>${city.name},${country.name}</p><p>${level.name}, ${subject.name}, ${language.name}</p>`;
+
+document.querySelector("#programmes>ul").append(newProgramme)
+
+
   /*
 
     ARGUMENT
@@ -202,7 +252,23 @@ function create_programme (programme) {
 // G
 // CODE according to the specification
 function update_programmes () {
+  let programmesArray = read_filters();
+  console.log(programmesArray);
 
+  if (programmesArray.length < 1) {
+  
+      document.querySelector('#programmes > p').style.display = 'block';
+  } else {
+      document.querySelector('#programmes > p').style.display = 'none';
+  }
+  
+  let programmesContainer = document.querySelector("#programmes > ul");
+  programmesContainer.innerHTML = "";
+  
+  programmesArray.forEach(function (programme) {
+      create_programme(programme)
+  }
+  );
   /*
       NO ARGUMENTS
 
