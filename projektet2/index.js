@@ -20,6 +20,17 @@ create_levels_filter();
 create_subjects_filter();
 create_language_filter();
 create_countries_cities_filters();
+function create_language_filter () {
+  function create_element (data) {
+    const dom = create_filter_element({
+      parent: document.querySelector("#language_filter > ul"),
+      class: "selected",
+      textContent: data.name,
+    });
+    dom.dataset.id = data.id;
+  }
+  array_each(LANGUAGES, create_element);
+}
 
 // Add Interaction of search field button
 document.querySelector("#search_field button").addEventListener("click", update_programmes);
