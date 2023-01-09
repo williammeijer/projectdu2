@@ -66,26 +66,8 @@ function create_filter_element (data) {
 
 }
 
-
-// VG
-// CODE according to specification
 function add_group_toggling (filter_container_dom) {
 
-  /*
-    ARGUMENT
-      filter_container_dom: reference to a HTML-element that contains a set of fliter_elements
-            Exempel: the <ul> that contains the filters for Language.
-
-    SIDE EFFECTS
-      The function makes sure that when the user clicks on filter_container_dom, all the
-      filter_elements that it contains are selected / unselected.
-      Since some filter elements will have changed after the click, the list of
-      programmes must be updated.
-
-    NO RETURN VALUE
-
-  */
-  
 }
 
 
@@ -152,44 +134,25 @@ function create_countries_cities_filters () {
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-function create_levels_filter () {
-  function create_level (level) {
+function create_filter(programmesSpecs, parent) {
+  function create_element(data) {
     const dom = create_filter_element({
-      parent: document.querySelector("#level_filter > ul"),
-      class: "selected",
-      textContent: level.name,
-    });
-    dom.dataset.id = level.id;
-  }
-  array_each(LEVELS, create_level);
-}
-// Create Subjects Filter
-function create_subjects_filter () {
-  function create_subject (subject) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#subject_filter > ul"),
-      class: "selected",
-      textContent: subject.name,
-    });
-    dom.dataset.id = subject.id;
-  }
-  array_each(SUBJECTS, create_subject);
-}
-// Create Search Field
-function create_language_filter () {
-  function create_element (data) {
-    const dom = create_filter_element({
-      parent: document.querySelector("#language_filter > ul"),
+      parent: parent,
       class: "selected",
       textContent: data.name,
     });
-    dom.dataset.id = data.id;
+    dom.dataset[type + "Id"] = data.id;
   }
-  array_each(LANGUAGES, create_element);
+  array_each(programmesSpecs, create_element);
 }
 
+<<<<<<< Updated upstream
 
 
+=======
+// G / VG (see details in specification)
+// CODE according to specifications
+>>>>>>> Stashed changes
 function create_programme (programme) {
   let uni = UNIVERSITIES.find(function (uni) {
     if (uni.id == programme.universityID) return true;
