@@ -78,8 +78,8 @@ function create_countries_cities_filters () {
 }
 
 
-// G
-// WRITE SPECIFICATION
+
+// Den här funktionen skapar en serie DOM-element baserade på en indatamatris av objekt, programspecifikationer och lägga till dem som underordnade element till ett överordnat element, förälder. Varje skapat element har en klass "selected" och dess textinnehåll ställs in på namnegenskapen för motsvarande objekt i programSpecs. Dessutom sätts ett id-attribut på elementet, med dess värde som id-egenskapen för objektet. Funktionen använder en hjälpfunktion, create_filter_element, för att skapa DOM-elementet och tillämpa det angivna klassen och textinnehållet, men det framgår inte av den medföljande koden vilka andra operationer denna hjälpfunktion utför.
 
 function create_filter(programmesSpecs, parent) {
   function create_element(data) {
