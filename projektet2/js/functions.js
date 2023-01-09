@@ -110,9 +110,9 @@ function toggle_cities (event) {
 }
 
 
-// WRITE SPECIFICATION
-// ATTENTION: You need to write the specification of all three functions:
-//            create_countries_cities_filters, create_country and create_city
+// Create_countries_cities_filters är en function som skapar filter för countries och cities baserat på en array av country objekt och en array av city objekt.
+// Create_country tar in ett country objekt och skapar ett div element med classen "country" och "filter_container" och ett ID av "country_" följd av country's ID. Den lägger sedan till detta element till ett ul-element i ett överordnat element med ID "country_filter". InnerHTML för det skapade div-elementet ställs sedan in på att inkludera ett h1-element med landets namn och ett ul-element med klassen "filter_list"
+// Create_city tar in ett city objekt och skapar ett filter element med classen "selected", textinnehåll lika med stadens namn, och ett dataattribut "id" satt till stadens ID. Detta filterelement läggs till ett ul-element i ett överordnat element med ID:t "country_" följt av stadens lands-ID.
 function create_countries_cities_filters () {
   function create_country (country) {
     const dom = document.createElement("div");
@@ -189,8 +189,7 @@ function create_language_filter () {
 }
 
 
-// G / VG (see details in specification)
-// CODE according to specifications
+
 function create_programme (programme) {
   let uni = UNIVERSITIES.find(function (uni) {
     if (uni.id == programme.universityID) return true;
@@ -223,33 +222,10 @@ newProgramme.innerHTML =
 
 document.querySelector("#programmes>ul").append(newProgramme)
 
-
-  /*
-
-    ARGUMENT
-      programme (object): One of the objects from PROGRAMMES
-
-    SIDE-EFFECTS
-      This function creates the HTML-element that contains all the information
-      about one programme, as seen in the video / image.
-      
-      VG: The background image is a random image from among the images of the city
-          in which the programme is (via the university)
-      G:  No background image required.
-
-
-      VG: The "see more" interaction must be included.
-      G:  The "see more" element is not required. And that information needs not be in place.
-
-    NO RETURN VALUE
-
-  */  
-
 }
 
 
-// G
-// CODE according to the specification
+
 function update_programmes () {
   let programmesArray = read_filters();
   console.log(programmesArray);
@@ -268,30 +244,16 @@ function update_programmes () {
       create_programme(programme)
   }
   );
-  /*
-      NO ARGUMENTS
-
-      SIDE EFFECTS
-        This function updates the programmes shown on the page according to
-        the current filter status (which filter elements are selected / unselected).
-        It uses the function read_filters to know which programmes need to be included.
-
-        VG: The top images (header) need to be updated here
-
-      NO RETURN VALUE
-
-  */
 
 }
 
 
-// G
-// WRITE SPECIFICATION
-// You must understand how this function works. There will be questions about it
-// in the code review (kodredovisning)
+//Read_filters är en funktion som läser de valda filtren från DOM och returnerar en array av program som matchar de valda filtren. Den gör detta genom att först välja alla listelement med klassen "selected" inom elementen med ID "country_filter", "level_filter", "language_filter" och "subject_filter" och lagra dem i variablerna city_selected_dom, level_selected_dom, language_selected_dom och subject_selected_dom.
+//Funktionen definierar sedan flera callback-funktioner som ska skickas som argument till array_each-funktionen, som itererar över en array och anropar den tillhandahållna callback-funktionen på varje element. Dessa återuppringningsfunktioner extraherar "id"-dataattributet från varje DOM-element och skickar det till en array av ID:n för respektive filter (antingen stads-ID, nivå-ID, språk-ID eller ämnes-ID).
+//Därefter skapar funktionen en array av universitet som matchar de valda stads-ID:n genom att iterera över arrayen city_id_selected och UNIVERSITIES-arrayen och lägga till varje universitet med ett matchande stads-ID till universitetsarrayen. Den skapar sedan en array av program genom att anropa array_each-funktionen på universitetsarrayen, skicka in en callback-funktion som itererar över PROGRAM-arrayen och lägger till varje program med ett matchande universitets-ID till programarrayen.
+//Funktionen filtrerar sedan programmatrisen med hjälp av array_filter-funktionen och callback funktioner som testar om programmets nivå-ID, språk-ID eller ämnes-ID finns i respektive matris av valda ID:n.
+//Slutligen filtrerar funktionen programmatrisen igen genom att söka efter en matchning med en söksträng som anges i ett sökfältselement. Om söksträngen inte är tom anropas array_filter-funktionen på program-arrayen med en callback-funktion som testar om programmets namn innehåller söksträngen. Den slutliga programmatrisen returneras sedan.
 
-// Optional VG: Which parts of the function's code could be abstracted?
-//              Implement it
 function read_filters () {
   
   const city_selected_dom = document.querySelectorAll("#country_filter li.selected");
