@@ -14,22 +14,7 @@ function click_filter_element (event) {
 
   update_programmes();
 
-  /*
-    ARGUMENTS
-      event: event-object created when user clicks on one of the filter elements.
 
-    SIDE-EFFECTS
-      Marks the clicked filter element as selected / unselected.
-      Since a filter element will have changed after the click, the list of
-      programmes must be updated.
-
-      Attention VG
-        Careful with the propagation of the click-event
-
-    NO RETURN VALUE
-
-  */
-  
 }
 
 
@@ -44,26 +29,7 @@ function create_filter_element (data) {
 
     
     return element;
-  /*
-    ARGUMENTS
-      data: object that contains the following keys:
-        class (string): a class-name given to the created element
-        textContent (string): the text that the element contains
-        parent (reference to HTML-element): the HTML-element that is the parent of the created element
-
-      No control of arguments.
-
-    SIDE-EFFECTS
-      Creates a new dom-element with the tag "li".
-      Gives the new dom-element the class contained in data.class
-      Appends the new dom-element to the element referenced in data.parent
-      Sets the text content of the new dom-element to data.textContent
-      Sets the function click_filter_element as a listener to "click" for the new dom-element
-
-    RETURN VALUE
-      Returns a reference to the new dom-element
-  */
-
+ 
 }
 
 function add_group_toggling (filter_container_dom) {
@@ -141,18 +107,13 @@ function create_filter(programmesSpecs, parent) {
       class: "selected",
       textContent: data.name,
     });
-    dom.dataset[type + "Id"] = data.id;
+    dom.dataset.id=filter.id;
   }
   array_each(programmesSpecs, create_element);
 }
 
-<<<<<<< Updated upstream
 
 
-=======
-// G / VG (see details in specification)
-// CODE according to specifications
->>>>>>> Stashed changes
 function create_programme (programme) {
   let uni = UNIVERSITIES.find(function (uni) {
     if (uni.id == programme.universityID) return true;
