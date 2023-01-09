@@ -42,7 +42,6 @@ function create_filter_element (data) {
     element.textContent = data.textContent;
     element.addEventListener("click", click_filter_element);
 
-    //console.log();
     
     return element;
   /*
