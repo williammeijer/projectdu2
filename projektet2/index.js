@@ -30,6 +30,18 @@ function create_levels_filter () {
   }
   array_each(LEVELS, create_level);
 }
+
+function create_levels_filter () {
+  function create_level (level) {
+    const dom = create_filter_element({
+      parent: document.querySelector("#level_filter > ul"),
+      class: "selected",
+      textContent: level.name,
+    });
+    dom.dataset.id = level.id;
+  }
+  array_each(LEVELS, create_level);
+}
 // Add Interaction of search field button
 document.querySelector("#search_field button").addEventListener("click", update_programmes);
 
