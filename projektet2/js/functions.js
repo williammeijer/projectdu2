@@ -202,7 +202,23 @@ function create_programme (programme) {
 // G
 // CODE according to the specification
 function update_programmes () {
+  let programmesArray = read_filters();
+  console.log(programmesArray);
 
+  if (programmesArray.length < 1) {
+  
+      document.querySelector('#programmes > p').style.display = 'block';
+  } else {
+      document.querySelector('#programmes > p').style.display = 'none';
+  }
+  
+  let programmesContainer = document.querySelector("#programmes > ul");
+  programmesContainer.innerHTML = "";
+  
+  programmesArray.forEach(function (programme) {
+      create_programme(programme)
+  }
+  );
   /*
       NO ARGUMENTS
 
