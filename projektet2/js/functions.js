@@ -1,5 +1,4 @@
-// G
-// CODE According to specification
+
 function click_filter_element (event) {
   let classList = event.currentTarget.classList;
   let check = classList.contains("selected")
@@ -18,8 +17,7 @@ function click_filter_element (event) {
 }
 
 
-// G
-// CODE according to specification
+
 function create_filter_element (data) {
   const element = document.createElement("li");
     element.classList.add(data.class);
@@ -37,23 +35,7 @@ function add_group_toggling (filter_container_dom) {
 }
 
 
-// VG
-// CODE according to specifications
 function toggle_cities (event) {
-
-  /*
-
-    ARGUMENTS
-      This function does not take any arguments
-
-    SIDE EFFECTS
-      This function checks the state of the first city-filter-element (Madrid).
-      If it is selected then it de-selects ALL city-filter-elements
-      If it is de-selected then it selects ALL city-filter-elements 
-
-    NO RETURN VALUE
-
-  */
 
 }
 
@@ -97,9 +79,8 @@ function create_countries_cities_filters () {
 
 
 // G
-// ABSTRACT AND WRITE SPECIFICATION
-//    As you can see, all three functions below do basically the same thing.
-//    Abstract them to one function, and write the specification of that function.
+// WRITE SPECIFICATION
+
 function create_filter(programmesSpecs, parent) {
   function create_element(data) {
     const dom = create_filter_element({
