@@ -174,7 +174,38 @@ function create_language_filter () {
 // G / VG (see details in specification)
 // CODE according to specifications
 function create_programme (programme) {
-  
+  let uni = UNIVERSITIES.find(function (uni) {
+    if (uni.id == programme.universityID) return true;
+});
+
+let city = CITIES.find(function (city) {
+    if (city.id == uni.cityID) return true;
+});
+
+let country = COUNTRIES.find(function (country) {
+    if (country.id == city.countryID) return true;
+});
+
+let subject = SUBJECTS.find(function (subject) {
+    if (subject.id == programme.subjectID) return true;
+});
+
+let language = LANGUAGES.find(function (language) {
+    if (language.id == programme.languageID) return true;
+});
+
+let level = LEVELS.find(function (level) {
+    if (level.id == programme.levelID) return true;
+});
+
+let newProgramme = document.createElement("li");
+
+newProgramme.innerHTML =
+`<h1>${programme.name}</h1><p>${uni.name}</p><p>${city.name},${country.name}</p><p>${level.name}, ${subject.name}, ${language.name}</p>`;
+
+document.querySelector("#programmes>ul").append(newProgramme)
+
+
   /*
 
     ARGUMENT
