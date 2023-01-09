@@ -1,18 +1,7 @@
+
 // G
 // CODE According to specification
 function click_filter_element (event) {
-  let classList = event.currentTarget.classList;
-  let check = classList.contains("selected")
-  console.log(classList);
-  console.log(check);
-
-  if (check) {
-      classList.remove("selected");
-  } else {
-      classList.add("selected");
-  }
-
-  update_programmes();
 
   /*
     ARGUMENTS
