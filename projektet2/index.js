@@ -31,6 +31,17 @@ function create_language_filter () {
   }
   array_each(LANGUAGES, create_element);
 }
+function create_language_filter () {
+  function create_element (data) {
+    const dom = create_filter_element({
+      parent: document.querySelector("#language_filter > ul"),
+      class: "selected",
+      textContent: data.name,
+    });
+    dom.dataset.id = data.id;
+  }
+  array_each(LANGUAGES, create_element);
+}
 
 // Add Interaction of search field button
 document.querySelector("#search_field button").addEventListener("click", update_programmes);
